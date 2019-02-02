@@ -12,10 +12,7 @@ class BookSearchService {
         axios
           .get(this.url(query))
           .then(response => {
-            const items = this.itemsWithSavedValue(
-              response.data.items || [],
-              etags
-            );
+            const items = this.formatedItems(response.data.items || [], etags);
             resolve(items);
           })
           .catch(err => {
@@ -26,10 +23,18 @@ class BookSearchService {
     });
   }
 
-  itemsWithSavedValue(items, etags) {
+  formatedItems(items, etags) {
     return items.map(item => {
-      item.saved = etags.includes(item.etag);
-      return item;
+      const { authors, description, imageLinks, title } = item.volumeInfo;
+      return {
+        authors,
+        description,
+        etag: item.etag,
+        image: imageLinks.thumbnail,
+        link: item.selfLink,
+        saved: etags.includes(item.etag),
+        title
+      };
     });
   }
 
