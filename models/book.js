@@ -10,6 +10,12 @@ const bookSchema = new Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
+bookSchema.statics.findAllEtags = function(callback) {
+  Book.find({})
+    .select({ etag: 1, _id: 0 })
+    .exec(callback);
+};
+
 const Book = mongoose.model("Book", bookSchema);
 
 module.exports = Book;
