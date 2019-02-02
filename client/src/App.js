@@ -12,12 +12,10 @@ class App extends React.Component {
       <Router>
         <>
           <Nav />
-          <div className="container">
-            <Switch>
-              <Route exact path="/" component={IndexPage} />
-              <Route exact path="/saved" component={SavedPage} />
-            </Switch>
-          </div>
+          <Switch>
+            <Route exact path="/" component={IndexPage} />
+            <Route exact path="/saved" component={SavedPage} />
+          </Switch>
         </>
       </Router>
     );

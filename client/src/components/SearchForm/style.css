@@ -1,0 +1,13 @@
+.search-form-container {
+  background: url("/assets/images/cover.jpg") center;
+  background-size: cover;
+  color: #f0f0f0;
+  border-radius: 0px 0px 5px 5px;
+  padding: 80px 20px;
+}
+
+.search-form-container h1 {
+  font-size: 2em;
+  margin-bottom: 40px;
+  text-shadow: #595452 1px 1px;
+}

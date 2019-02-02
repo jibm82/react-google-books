@@ -42,10 +42,19 @@ class IndexPage extends React.Component {
     return (
       <>
         <SearchForm onSearch={books => this.handleSearch(books)} />
-        <div className="row">
-          {this.state.books.map((book, i) => {
-            return <Book {...book} onClickHandler={() => this.handleSave(i)} />;
-          })}
+        <div className="container">
+          <div className="card-columns">
+            {this.state.books.map((book, i) => {
+              return (
+                <Book
+                  {...book}
+                  onClickHandler={() => this.handleSave(i)}
+                  buttonText="Save this book"
+                  buttonClass="btn-dark"
+                />
+              );
+            })}
+          </div>
         </div>
       </>
     );

@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.css";
 
 class Book extends React.Component {
   state = {
@@ -7,22 +8,33 @@ class Book extends React.Component {
 
   render() {
     return (
-      <div className="book col-md-4">
-        <img src={this.props.image} />
-        <h3>{this.props.title}</h3>
-        <p>{this.props.description}</p>
-        <p>
+      <div className="book card">
+        <div className="card-header text-center">
+          <img className="img-fluid" src={this.props.image} />
+        </div>
+        <div className="card-body">
+          <h4 className="card-title">{this.props.title}</h4>
+          <h6 className="card-text">By {this.props.authors.join(", ")}</h6>
+          <div className="description card-text">
+            {this.props.description != undefined ? (
+              this.props.description
+            ) : (
+              <span className="text-muted">No description found</span>
+            )}
+          </div>
+        </div>
+        <div className="card-footer text-right">
           {this.props.saved ? (
-            <label>Already saved</label>
+            <span class="badge badge-success">Already saved!</span>
           ) : (
             <button
-              className="btn btn-primary"
+              className={`btn ${this.props.buttonClass}`}
               onClick={this.props.onClickHandler}
             >
-              Save
+              {this.props.buttonText}
             </button>
           )}
-        </p>
+        </div>
       </div>
     );
   }

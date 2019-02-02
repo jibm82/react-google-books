@@ -1,6 +1,8 @@
 import React from "react";
 import booksService from "../../services/booksService";
 import Book from "../../components/Book";
+import Spotlight from "../../components/Spotlight";
+import "./style.css";
 
 class SavedPage extends React.Component {
   state = {
@@ -26,13 +28,20 @@ class SavedPage extends React.Component {
   render() {
     return (
       <>
-        <h1>This is the saved page</h1>
-        <div className="row">
-          {this.state.books.map((book, i) => {
-            return (
-              <Book {...book} onClickHandler={() => this.handleDelete(i)} />
-            );
-          })}
+        <Spotlight counter={this.state.books.length} />
+        <div className="container">
+          <div className="card-columns">
+            {this.state.books.map((book, i) => {
+              return (
+                <Book
+                  {...book}
+                  onClickHandler={() => this.handleDelete(i)}
+                  buttonClass="btn-danger"
+                  buttonText="Remove"
+                />
+              );
+            })}
+          </div>
         </div>
       </>
     );

@@ -1,0 +1,9 @@
+.book {
+  margin: 40px 0px 20px;
+}
+
+.book .description {
+  font-size: 0.8em;
+  line-height: 1.8em;
+  padding: 10px 0px;
+}
